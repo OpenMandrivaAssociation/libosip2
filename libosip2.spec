@@ -12,6 +12,7 @@ URL: 		http://savannah.gnu.org/projects/osip/
 Source0:	http://ftp.gnu.org/gnu/osip/%{name}-%{version}.tar.bz2
 BuildRequires:	libtool
 BuildRequires:	autoconf2.5
+BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
 This is the oSIP library. It has been designed to provide the
