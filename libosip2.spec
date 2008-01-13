@@ -5,7 +5,7 @@ Summary:	oSIP is an implementation of SIP - rfc2543
 Name:		libosip2
 # (oe) DO NOT UPGRADE TO 3.x
 Version: 	2.2.2
-Release: 	%mkrel 3
+Release: 	%mkrel 4
 License: 	LGPL
 Group:		System/Libraries
 URL: 		http://savannah.gnu.org/projects/osip/
