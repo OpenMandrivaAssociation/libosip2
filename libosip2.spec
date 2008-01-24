@@ -5,7 +5,7 @@
 Summary:	oSIP is an implementation of SIP - rfc2543
 Name:		libosip2
 Version: 	3.0.3
-Release: 	%mkrel 2
+Release: 	%mkrel 3
 License: 	LGPL
 Group:		System/Libraries
 URL: 		http://savannah.gnu.org/projects/osip/
@@ -35,9 +35,6 @@ Summary:	Header file required to build programs using liboSIP
 Group:		Development/C
 Requires:	%{libname} = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
-# Old library name:
-Obsoletes:	%mklibname -d osip 2
-Provides:	libosip-devel
 
 %description -n	%{libname_devel}
 Developments files for %{libname} (oSIP Library). Needed to build
