@@ -2,7 +2,7 @@
 %define libname %mklibname osip2_ %major
 %define libname_devel %mklibname -d osip2
 
-Summary:	oSIP is an implementation of SIP - rfc2543
+Summary:	Implementation of SIP - rfc2543
 Name:		libosip2
 Version: 	3.0.3
 Release: 	%mkrel 3
@@ -21,7 +21,7 @@ Protocol. SIP is described in the RFC3261 which is available at
 http://www.ietf.org/rfc/rfc3261.txt.
 
 %package -n	%{libname}
-Summary:	oSIP is an implementation of SIP - rfc2543
+Summary:	Implementation of SIP - rfc2543
 Group:		System/Libraries
 
 %description -n	%{libname}
