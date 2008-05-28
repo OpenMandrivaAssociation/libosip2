@@ -1,11 +1,11 @@
-%define major 2
+%define major 3
 %define libname %mklibname osip2_ %major
 %define libname_devel %mklibname -d osip2
 
 Summary:	Implementation of SIP - rfc2543
 Name:		libosip2
-Version: 	3.0.3
-Release: 	%mkrel 4
+Version: 	3.1.0
+Release: 	%mkrel 1
 License: 	LGPL
 Group:		System/Libraries
 URL: 		http://savannah.gnu.org/projects/osip/
@@ -45,7 +45,8 @@ apps such as linphone and siproxd.
 %setup -q
 
 %build
-%configure
+export CFLAGS="%{optflags} -pthread"
+%configure2_5x
 %make
 
 %install
@@ -73,8 +74,6 @@ mv %{buildroot}%{_mandir}/man1/osip.1 %{buildroot}%{_mandir}/man1/osip2.1
 %{_libdir}/*.so
 %{_libdir}/*.a
 %{_libdir}/*.la
-%dir %{_includedir}/osip2
 %{_includedir}/osip2
-%dir %{_includedir}/osipparser2
 %{_includedir}/osipparser2
 %{_libdir}/pkgconfig/*.pc
