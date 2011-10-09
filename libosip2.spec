@@ -1,18 +1,17 @@
-%define major 4
-%define libname %mklibname osip2_ %major
+%define major 7
+%define libname %mklibname osip2_ %{major}
 %define libname_devel %mklibname -d osip2
 
 Summary:	Implementation of SIP - rfc2543
 Name:		libosip2
-Version: 	3.3.0
-Release: 	%mkrel 3
+Version: 	3.6.0
+Release: 	%mkrel 1
 License: 	LGPLv2+
 Group:		System/Libraries
 URL: 		http://savannah.gnu.org/projects/osip/
 Source0:	http://ftp.gnu.org/gnu/osip/%{name}-%{version}.tar.gz
-Patch0:		libosip2-3.2.0-str-fmt.patch
-BuildRequires:	libtool
-BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
+Patch0:		libosip2-3.5.0-linkage.patch
+BuildRoot:     %{_tmppath}/%{name}-%{version}-buildroot
 
 %description
 This is the oSIP library. It has been designed to provide the
@@ -23,7 +22,8 @@ http://www.ietf.org/rfc/rfc3261.txt.
 %package -n	%{libname}
 Summary:	Implementation of SIP - rfc2543
 Group:		System/Libraries
-Obsoletes:	%{mklibname osip2} < %version
+Obsoletes:	%{mklibname osip2} < %{version}
+Obsoletes:	%{_lib}osip2_4 < %{version}
 
 %description -n	%{libname}
 This is the oSIP library. It has been designed to provide the
@@ -42,32 +42,25 @@ Developments files for %{libname} (oSIP Library). Needed to build
 apps such as linphone and siproxd.
 
 %prep
-
 %setup -q
-%patch0 -p0
+%patch0 -p0 -b .link
 
 %build
-export CFLAGS="%{optflags} -pthread"
-%configure2_5x
+%configure2_5x --disable-static
 %make
 
 %install
-[ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
+rm -rf %{buildroot}
 
-%makeinstall
+%makeinstall_std
 
 mv %{buildroot}%{_mandir}/man1/osip.1 %{buildroot}%{_mandir}/man1/osip2.1
 
-%if %mdkversion < 200900
-%post -n %{libname} -p /sbin/ldconfig
-%endif
-
-%if %mdkversion < 200900
-%postun -n %{libname} -p /sbin/ldconfig
-%endif
+# don't ship .a, .la
+rm -f %{buildroot}%{_libdir}/*.la
 
 %clean
-[ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
+rm -rf %{buildroot}
 
 %files -n %{libname}
 %defattr(-,root,root)
@@ -78,8 +71,7 @@ mv %{buildroot}%{_mandir}/man1/osip.1 %{buildroot}%{_mandir}/man1/osip2.1
 %files -n %{libname_devel}
 %defattr(-,root,root)
 %{_libdir}/*.so
-%{_libdir}/*.a
-%{_libdir}/*.la
 %{_includedir}/osip2
 %{_includedir}/osipparser2
 %{_libdir}/pkgconfig/*.pc
+
