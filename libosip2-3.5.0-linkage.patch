@@ -1,0 +1,42 @@
+--- src/osip2/Makefile.am.link	2011-08-01 10:24:43.000000000 +0200
++++ src/osip2/Makefile.am	2011-08-01 10:26:03.000000000 +0200
+@@ -13,11 +13,11 @@
+ libosip2_la_SOURCES+=port_sema.c port_thread.c port_condv.c
+ endif
+ 
+-libosip2_la_LDFLAGS = -version-info $(LIBOSIP_SO_VERSION) \
+- $(FSM_LIB) $(EXTRA_LIB) ../osipparser2/libosipparser2.la -no-undefined
++libosip2_la_LDFLAGS = -version-info $(LIBOSIP_SO_VERSION) -no-undefined
++libosip2_la_LIBADD = $(FSM_LIB) $(EXTRA_LIB) ../osipparser2/libosipparser2.la
+ 
+ 
+ INCLUDES = -I$(top_srcdir)/include
+-AM_CFLAGS = $(SIP_CFLAGS) $(SIP_FSM_FLAGS) $(SIP_EXTRA_FLAGS)
++AM_CFLAGS = $(SIP_CFLAGS) $(SIP_FSM_FLAGS) $(SIP_EXTRA_FLAGS) $(PTHREAD_CFLAGS)
+ 
+ 
+--- src/osip2/Makefile.in.link	2011-01-04 12:56:01.000000000 +0100
++++ src/osip2/Makefile.in	2011-08-01 10:32:58.000000000 +0200
+@@ -70,7 +70,7 @@
+   sed '$$!N;$$!N;$$!N;$$!N;s/\n/ /g'
+ am__installdirs = "$(DESTDIR)$(libdir)"
+ LTLIBRARIES = $(lib_LTLIBRARIES)
+-libosip2_la_LIBADD =
++libosip2_la_LIBADD = $(FSM_LIB) $(EXTRA_LIB) ../osipparser2/libosipparser2.la
+ am__libosip2_la_SOURCES_DIST = ict_fsm.c ist_fsm.c nict_fsm.c \
+ 	nist_fsm.c ict.c ist.c nict.c nist.c fsm_misc.c osip.c \
+ 	osip_transaction.c osip_event.c port_fifo.c osip_dialog.c \
+@@ -234,11 +234,10 @@
+ 	ist.c nict.c nist.c fsm_misc.c osip.c osip_transaction.c \
+ 	osip_event.c port_fifo.c osip_dialog.c osip_time.c \
+ 	$(am__append_1)
+-libosip2_la_LDFLAGS = -version-info $(LIBOSIP_SO_VERSION) \
+- $(FSM_LIB) $(EXTRA_LIB) ../osipparser2/libosipparser2.la -no-undefined
++libosip2_la_LDFLAGS = -version-info $(LIBOSIP_SO_VERSION) -no-undefined
+ 
+ INCLUDES = -I$(top_srcdir)/include
+-AM_CFLAGS = $(SIP_CFLAGS) $(SIP_FSM_FLAGS) $(SIP_EXTRA_FLAGS)
++AM_CFLAGS = $(SIP_CFLAGS) $(SIP_FSM_FLAGS) $(SIP_EXTRA_FLAGS) $(PTHREAD_CFLAGS)
+ all: all-am
+ 
+ .SUFFIXES:
