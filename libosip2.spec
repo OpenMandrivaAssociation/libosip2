@@ -11,7 +11,11 @@ Group:		System/Libraries
 URL:		http://savannah.gnu.org/projects/osip/
 Source0:	http://ftp.gnu.org/gnu/osip/%{name}-%{version}.tar.gz
 Source1:	http://ftp.gnu.org/gnu/osip/%{name}-%{version}.tar.gz.sig
-Patch0:		libosip2-4.0.0-linkage.patch
+# odd: there is the same lib offered at 
+# http://www.gnutelephony.org/dist/tarballs
+# the patch applies to that fork. both pkgs indicate ftp.gnu.org/gnu/osip
+# as the homepage, so i have reverted to that source.
+#Patch0:		libosip2-4.0.0-linkage.patch
 
 %description
 This is the oSIP library. It has been designed to provide the
