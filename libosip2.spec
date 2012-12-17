@@ -1,4 +1,4 @@
-%define major	7
+%define major	10
 %define libname %mklibname osip2_ %{major}
 %define devname %mklibname -d osip2
 
@@ -11,7 +11,7 @@ Group:		System/Libraries
 URL:		http://savannah.gnu.org/projects/osip/
 Source0:	http://ftp.gnu.org/gnu/osip/%{name}-%{version}.tar.gz
 Source1:	http://ftp.gnu.org/gnu/osip/%{name}-%{version}.tar.gz.sig
-Patch0:		libosip2-3.5.0-linkage.patch
+Patch0:		libosip2-4.0.0-linkage.patch
 
 %description
 This is the oSIP library. It has been designed to provide the
@@ -44,7 +44,7 @@ apps such as linphone and siproxd.
 
 %prep
 %setup -q
-%patch0 -p0 -b .link
+%apply_patches
 
 %build
 %configure2_5x \
