@@ -54,7 +54,7 @@ apps such as linphone and siproxd.
 %configure2_5x \
 	--disable-static
 
-%make LIBS='-lrt'
+%make LIBS='-lrt -pthread'
 
 %install
 %makeinstall_std
