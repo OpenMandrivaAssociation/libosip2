@@ -5,7 +5,7 @@
 Summary:	Implementation of SIP - rfc2543
 Name:		libosip2
 Version:	4.0.0
-Release:	1
+Release:	2
 License:	LGPLv2+
 Group:		System/Libraries
 URL:		http://savannah.gnu.org/projects/osip/
@@ -41,6 +41,8 @@ Group:		Development/C
 Requires:	%{libname} = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
 Obsoletes:	%{_lib}osip2-devel < 3.6.0
+# Some files were moved from library to devel package
+Conflicts:	%{_lib}osip2_7 < 4.0.0
 
 %description -n	%{devname}
 Developments files for %{libname} (oSIP Library). Needed to build
