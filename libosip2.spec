@@ -1,14 +1,15 @@
 %define major	10
 %define libname %mklibname osip2_ %{major}
+%define libparser %mklibname osipparser2_ %{major}
 %define devname %mklibname -d osip2
 
 Summary:	Implementation of SIP - rfc2543
 Name:		libosip2
 Version:	4.0.0
-Release:	2
+Release:	3
 License:	LGPLv2+
 Group:		System/Libraries
-URL:		http://savannah.gnu.org/projects/osip/
+Url:		http://savannah.gnu.org/projects/osip/
 Source0:	http://ftp.gnu.org/gnu/osip/%{name}-%{version}.tar.gz
 Source1:	http://ftp.gnu.org/gnu/osip/%{name}-%{version}.tar.gz.sig
 # odd: there is the same lib offered at 
@@ -26,8 +27,6 @@ http://www.ietf.org/rfc/rfc3261.txt.
 %package -n	%{libname}
 Summary:	Implementation of SIP - rfc2543
 Group:		System/Libraries
-Obsoletes:	%{mklibname osip2} < 3.6.0
-Obsoletes:	%{_lib}osip2_4 < 3.6.0
 
 %description -n	%{libname}
 This is the oSIP library. It has been designed to provide the
@@ -35,14 +34,20 @@ Internet Community a simple way to support the Session Initiation
 Protocol. SIP is described in the RFC3261 which is available at
 http://www.ietf.org/rfc/rfc3261.txt.
 
+%package -n	%{libparser}
+Summary:	Implementation of SIP - rfc2543
+Group:		System/Libraries
+Conflicts:	%{_lib}osip2_10 < 4.0.0-3
+
+%description -n	%{libparser}
+This package contains a shared library for %{name}.
+
 %package -n	%{devname}
 Summary:	Header file required to build programs using liboSIP
 Group:		Development/C
 Requires:	%{libname} = %{version}-%{release}
+Requires:	%{libparser} = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
-Obsoletes:	%{_lib}osip2-devel < 3.6.0
-# Some files were moved from library to devel package
-Conflicts:	%{_lib}osip2_7 < 4.0.0
 
 %description -n	%{devname}
 Developments files for %{libname} (oSIP Library). Needed to build
@@ -64,7 +69,10 @@ apps such as linphone and siproxd.
 mv %{buildroot}%{_mandir}/man1/osip.1 %{buildroot}%{_mandir}/man1/osip2.1
 
 %files -n %{libname}
-%{_libdir}/*.so.%{major}*
+%{_libdir}/libosip2.so.%{major}*
+
+%files -n %{libparser}
+%{_libdir}/libosipparser2.so.%{major}*
 
 %files -n %{devname}
 %doc AUTHORS BUGS ChangeLog NEWS README TODO
