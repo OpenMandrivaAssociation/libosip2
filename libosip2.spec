@@ -6,7 +6,7 @@
 Summary:	Implementation of SIP - rfc2543
 Name:		libosip2
 Version:	4.0.0
-Release:	10
+Release:	11
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		http://savannah.gnu.org/projects/osip/
