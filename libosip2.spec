@@ -1,22 +1,16 @@
-%define major	10
+%define major	12
 %define libname %mklibname osip2_ %{major}
 %define libparser %mklibname osipparser2_ %{major}
 %define devname %mklibname -d osip2
 
 Summary:	Implementation of SIP - rfc2543
 Name:		libosip2
-Version:	4.0.0
-Release:	13
+Version:	5.1.0
+Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		http://savannah.gnu.org/projects/osip/
 Source0:	http://ftp.gnu.org/gnu/osip/%{name}-%{version}.tar.gz
-Source1:	http://ftp.gnu.org/gnu/osip/%{name}-%{version}.tar.gz.sig
-# odd: there is the same lib offered at 
-# http://www.gnutelephony.org/dist/tarballs
-# the patch applies to that fork. both pkgs indicate ftp.gnu.org/gnu/osip
-# as the homepage, so i have reverted to that source.
-#Patch0:		libosip2-4.0.0-linkage.patch
 
 %description
 This is the oSIP library. It has been designed to provide the
