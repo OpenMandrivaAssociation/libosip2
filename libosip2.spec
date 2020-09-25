@@ -5,7 +5,7 @@
 
 Summary:	Implementation of SIP - rfc2543
 Name:		libosip2
-Version:	5.1.0
+Version:	5.1.2
 Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
@@ -48,17 +48,16 @@ Developments files for %{libname} (oSIP Library). Needed to build
 apps such as linphone and siproxd.
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
-%configure2_5x \
+%configure \
 	--disable-static
 
-%make LIBS='-lrt -pthread'
+%make_build LIBS='-lrt -pthread'
 
 %install
-%makeinstall_std
+%make_install
 
 mv %{buildroot}%{_mandir}/man1/osip.1 %{buildroot}%{_mandir}/man1/osip2.1
 
@@ -75,4 +74,3 @@ mv %{buildroot}%{_mandir}/man1/osip.1 %{buildroot}%{_mandir}/man1/osip2.1
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
 %{_mandir}/man1/*
-
