@@ -1,4 +1,4 @@
-%define major	12
+%define major 13
 %define libname %mklibname osip2_ %{major}
 %define libparser %mklibname osipparser2_ %{major}
 %define devname %mklibname -d osip2
