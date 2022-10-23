@@ -1,11 +1,11 @@
-%define major 13
-%define libname %mklibname osip2_ %{major}
-%define libparser %mklibname osipparser2_ %{major}
+%define major 15
+%define libname %mklibname osip2
+%define libparser %mklibname osipparser2
 %define devname %mklibname -d osip2
 
 Summary:	Implementation of SIP - rfc2543
 Name:		libosip2
-Version:	5.1.2
+Version:	5.3.1
 Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
@@ -49,12 +49,10 @@ apps such as linphone and siproxd.
 
 %prep
 %autosetup -p1
+%configure
 
 %build
-%configure \
-	--disable-static
-
-%make_build LIBS='-lrt -pthread'
+%make_build LIBS='-pthread'
 
 %install
 %make_install
