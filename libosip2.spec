@@ -9,7 +9,7 @@ Version:	5.3.1
 Release:	2
 License:	LGPLv2+
 Group:		System/Libraries
-Url:		http://savannah.gnu.org/projects/osip/
+Url:		https://savannah.gnu.org/projects/osip/
 Source0:	http://ftp.gnu.org/gnu/osip/%{name}-%{version}.tar.gz
 
 %description
