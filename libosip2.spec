@@ -12,6 +12,11 @@ Group:		System/Libraries
 Url:		https://savannah.gnu.org/projects/osip/
 Source0:	http://ftp.gnu.org/gnu/osip/%{name}-%{version}.tar.gz
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 %description
 This is the oSIP library. It has been designed to provide the
 Internet Community a simple way to support the Session Initiation
